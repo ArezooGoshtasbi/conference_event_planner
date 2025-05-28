@@ -3,38 +3,33 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     addOns: [
         {
-            id: 1,
-            name: "Projector",
-            cost: 100, 
             image: "/Images/Projector.jpg",
+            name: "Projector",
+            cost: 200, 
             quantity: 0
         },
         {
-            id: 2,
-            name: "Speakers",
-            cost: 75, 
             image: "/Images/Speakers.jpg",
+            name: "Speaker",
+            cost: 35, 
             quantity: 0
         },
         {
-            id: 3,
-            name: "Microphone",
-            cost: 50, 
             image: "/Images/Microphone.jpg",
+            name: "Microphones",
+            cost: 45, 
             quantity: 0
         },
         {
-            id: 4,
-            name: "Whiteboard",
-            cost: 30, 
             image: "/Images/Whiteboard.png",
+            name: "Whiteboards",
+            cost: 80, 
             quantity: 0
         },
         {
-            id: 5,
-            name: "Signage",
-            cost: 20,
             image: "/Images/Signs.jpg",
+            name: "Signage",
+            cost: 80,
             quantity: 0
           }
     ]
@@ -46,17 +41,15 @@ export const avSlice = createSlice({
 
   reducers: {
     incrementAvQuantity: (state, action) => {
-        const index = action.payload;
-        const item = state.addOns[index];
+        const item = state[action.payload];
         if (item) {
-            item.quantity += 1;
+            item.quantity++;
         }
     },
     decrementAvQuantity: (state, action) => {
-        const index = action.payload;
-        const item = state.addOns[index];
+        const item = state[action.payload];
         if (item && item.quantity > 0) {
-            item.quantity -= 1;
+            item.quantity--;
         }
     },
   },
